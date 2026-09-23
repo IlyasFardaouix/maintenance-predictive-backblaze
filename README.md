@@ -10,31 +10,28 @@ Cahier des charges complet : [`01-gestion-projet/Projet2_Maintenance_predictive_
 (choisi à la place du NASA C-MAPSS FD001 suggéré par le sujet — à justifier
 dans la section 1 du rapport final).
 
-## Équipe et répartition (voir RACI, cahier des charges p.12)
+## Organisation Git de l'équipe
 
-| Dossier | Lot (WBS) | Responsable(s) | Livrable |
-|---|---|---|---|
-| [`01-gestion-projet/`](01-gestion-projet/) | Gestion de projet | Alex | Cahier des charges, planning, suivi |
-| [`02-donnees/`](02-donnees/) | Données et prétraitement | **Sarah** | L1 |
-| [`03-modelisation/`](03-modelisation/) | Modélisation | Karim (LSTM), Tom (baselines) | L2 |
-| [`04-evaluation/`](04-evaluation/) | Évaluation | Léa | L3 |
-| [`05-interpretation-metier/`](05-interpretation-metier/) | Interprétation métier | Inès | L4 |
-| [`06-livrables-finaux/`](06-livrables-finaux/) | Rapport, slides, démo | Toute l'équipe | L5, L7 |
+Convention du cahier des charges (p.15) : **une branche par personne, fusion
+après relecture** — jamais de travail direct sur `main`. Chaque dossier de lot
+(voir WBS, cahier des charges p.12) est ajouté au dépôt par son binôme
+responsable, via sa propre branche, quand son travail est prêt :
 
-Chaque dossier a son propre README avec le détail de ce qui doit y arriver.
-
-## Enchaînement du pipeline
-
-```
-02-donnees/  →  03-modelisation/  →  04-evaluation/  →  05-interpretation-metier/  →  06-livrables-finaux/
-(clean data)    (baseline + LSTM)    (métriques)         (seuil d'alerte, coûts)       (rapport, démo)
-```
+| Dossier | Lot (WBS) | Responsable(s) | Livrable | Statut |
+|---|---|---|---|---|
+| [`01-gestion-projet/`](01-gestion-projet/) | Gestion de projet | Alex | — | ✅ présent |
+| [`02-donnees/`](02-donnees/) | Données et prétraitement | **Sarah** | L1 | ✅ présent |
+| `03-modelisation/` | Modélisation | Karim (LSTM), Tom (baselines) | L2 | ⬜ à venir (branche à part) |
+| `04-evaluation/` | Évaluation | Léa | L3 | ⬜ à venir (branche à part) |
+| `05-interpretation-metier/` | Interprétation métier | Inès | L4 | ⬜ à venir (branche à part) |
+| `06-livrables-finaux/` | Rapport, slides, démo | Toute l'équipe | L5, L7 | ⬜ à venir (branche à part) |
 
 ## État d'avancement
 
 - ✅ `02-donnees/` : pipeline d'isolation (un seul modèle de disque) et de nettoyage prêt
   (voir [`02-donnees/README.md`](02-donnees/README.md)). En attente du dépôt du dataset brut.
-- ⬜ Les autres dossiers sont des emplacements réservés, à remplir par chaque binôme.
+- Les autres lots seront ajoutés par leur responsable via une branche dédiée, puis
+  fusionnés dans `main` après relecture croisée.
 
 ## Outils
 

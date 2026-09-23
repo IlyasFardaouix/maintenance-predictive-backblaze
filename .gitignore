@@ -1,6 +1,7 @@
-.venv/
-__pycache__/
-*.pyc
-data/raw/
-data/isolated/
-data/clean/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/data/raw/
+**/data/isolated/
+**/data/clean/
+**/.ipynb_checkpoints/

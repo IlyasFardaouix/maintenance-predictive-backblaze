@@ -1,64 +1,45 @@
-# Backblaze - Prétraitement (Livrable L1)
+# Projet 2 — Maintenance prédictive à partir de séries temporelles capteurs
 
-Pipeline en 3 étapes pour isoler puis nettoyer un sous-ensemble exploitable
-du dataset Backblaze, avant l'étape de prétraitement final (RUL, normalisation,
-fenêtrage) faite séparément pour le LSTM.
+Projet d'équipe (Industrie 4.0, 6 personnes, 4 semaines) : prédire la durée de
+vie restante (RUL) à partir de données de capteurs, avec un modèle de
+référence (baseline) et un modèle LSTM.
 
-## Structure
+Cahier des charges complet : [`01-gestion-projet/Projet2_Maintenance_predictive_plan_4_semaines_6_membres.pdf`](01-gestion-projet/Projet2_Maintenance_predictive_plan_4_semaines_6_membres.pdf)
+
+**Jeu de données :** [Backblaze Hard Drive Stats](https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data)
+(choisi à la place du NASA C-MAPSS FD001 suggéré par le sujet — à justifier
+dans la section 1 du rapport final).
+
+## Équipe et répartition (voir RACI, cahier des charges p.12)
+
+| Dossier | Lot (WBS) | Responsable(s) | Livrable |
+|---|---|---|---|
+| [`01-gestion-projet/`](01-gestion-projet/) | Gestion de projet | Alex | Cahier des charges, planning, suivi |
+| [`02-donnees/`](02-donnees/) | Données et prétraitement | **Sarah** | L1 |
+| [`03-modelisation/`](03-modelisation/) | Modélisation | Karim (LSTM), Tom (baselines) | L2 |
+| [`04-evaluation/`](04-evaluation/) | Évaluation | Léa | L3 |
+| [`05-interpretation-metier/`](05-interpretation-metier/) | Interprétation métier | Inès | L4 |
+| [`06-livrables-finaux/`](06-livrables-finaux/) | Rapport, slides, démo | Toute l'équipe | L5, L7 |
+
+Chaque dossier a son propre README avec le détail de ce qui doit y arriver.
+
+## Enchaînement du pipeline
 
 ```
-data cleaning/
-├── data/
-│   ├── raw/        <- dépose ici les fichiers Backblaze bruts (.csv)
-│   ├── isolated/   <- sortie étape 1 : un seul modèle de disque
-│   └── clean/      <- sortie étape 2 : dataset nettoyé
-├── reports/        <- rapports générés (justification des choix, pour le rapport)
-├── scripts/
-│   ├── 00_scan_models.py
-│   ├── 01_isolate.py
-│   └── 02_clean.py
-├── .venv/          <- environnement Python dédié à ce sous-projet
-└── requirements.txt
+02-donnees/  →  03-modelisation/  →  04-evaluation/  →  05-interpretation-metier/  →  06-livrables-finaux/
+(clean data)    (baseline + LSTM)    (métriques)         (seuil d'alerte, coûts)       (rapport, démo)
 ```
 
-## 1. Déposer les données
+## État d'avancement
 
-Place les fichiers Backblaze bruts (les `.csv` du zip trimestriel officiel,
-ou l'export Kaggle) dans `data/raw/`. Le script accepte :
-- plusieurs fichiers (un par jour ou un par trimestre), dans des sous-dossiers ou non ;
-- un seul gros fichier déjà fusionné.
+- ✅ `02-donnees/` : pipeline d'isolation (un seul modèle de disque) et de nettoyage prêt
+  (voir [`02-donnees/README.md`](02-donnees/README.md)). En attente du dépôt du dataset brut.
+- ⬜ Les autres dossiers sont des emplacements réservés, à remplir par chaque binôme.
 
-Colonnes attendues (format standard Backblaze) : `date`, `serial_number`,
-`model`, `capacity_bytes`, `failure`, `smart_X_raw`, `smart_X_normalized`.
+## Outils
 
-## 2. Lancer le pipeline
-
-Depuis ce dossier (`data cleaning/`) :
-
-```bash
-# Etape 0 - repérer quel modèle choisir comme "référence unique"
-.venv/Scripts/python.exe scripts/00_scan_models.py
-
-# Etape 1 - isoler ce modèle + les colonnes SMART pertinentes
-.venv/Scripts/python.exe scripts/01_isolate.py --model ST4000DM000
-
-# Etape 2 - nettoyer le dataset isolé
-.venv/Scripts/python.exe scripts/02_clean.py --model ST4000DM000
-```
-
-(remplace `ST4000DM000` par le modèle réellement choisi, donné par l'étape 0)
-
-## 3. Résultats
-
-- `data/isolated/isolated_<model>.csv` : un seul modèle, colonnes utiles seulement
-- `data/clean/clean_<model>.csv` : doublons retirés, colonnes constantes retirées,
-  trous comblés par disque, disques trop courts écartés
-- `reports/*.md` : le détail chiffré de chaque décision, réutilisable directement
-  dans la section "Données et prétraitement (L1)" du rapport final
-
-## Prochaine étape (pas encore faite ici)
-
-Le vrai "prétraitement" (calcul de la RUL, plafonnement, normalisation
-train-only, fenêtres glissantes) est volontairement **séparé** du cleaning :
-il sera fait dans un script `03_preprocess.py` une fois le cleaning validé,
-pour ne pas mélanger "rendre les données fiables" et "les préparer pour le modèle".
+Chaque dossier peut avoir son propre environnement Python (ex. `02-donnees/.venv/`,
+`02-donnees/requirements.txt`) puisque les besoins diffèrent (pandas/numpy pour
+le nettoyage, TensorFlow/Keras pour la modélisation). Rien de tout ça n'est
+versionné (voir `.gitignore` à la racine) : chacun recrée son environnement
+localement avec le `requirements.txt` de son dossier.

@@ -1,7 +1,7 @@
 # Maintenance prédictive - séries temporelles capteurs
 
 Prédire la durée de vie restante (RUL) de disques durs à partir de leurs
-données SMART, avec un modèle de référence et un modèle LSTM.
+données SMART, avec plusieurs modèles, dont un LSTM.
 
 **Jeu de données :** [Backblaze Hard Drive Stats](https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data)
 

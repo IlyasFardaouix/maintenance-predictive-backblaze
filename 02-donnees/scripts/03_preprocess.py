@@ -177,7 +177,10 @@ def preprocess(model):
     run_pass_b(tmp_path, out_path, smart_cols, col_min, col_max)
     os.remove(tmp_path)
 
-    params_path = os.path.join(PREPROC_DIR, f"normalization_params_{model}.json")
+    # dans reports/ (pas data/preprocessed/) : petit fichier, utile a versionner
+    # pour la reproductibilite, contrairement au gros CSV pretraite
+    os.makedirs("reports", exist_ok=True)
+    params_path = os.path.join("reports", f"normalization_params_{model}.json")
     with open(params_path, "w", encoding="utf-8") as f:
         json.dump(
             {

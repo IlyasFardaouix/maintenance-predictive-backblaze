@@ -1,0 +1,103 @@
+{
+  "method": "min-max",
+  "fitted_on": "train split only",
+  "rul_cap": 125,
+  "columns": {
+    "smart_10_raw": {
+      "min": 0.0,
+      "max": 65536.0
+    },
+    "smart_12_raw": {
+      "min": 0.0,
+      "max": 30088.0
+    },
+    "smart_183_raw": {
+      "min": 0.0,
+      "max": 21060.0
+    },
+    "smart_184_raw": {
+      "min": 0.0,
+      "max": 256.0
+    },
+    "smart_187_raw": {
+      "min": 0.0,
+      "max": 1440.0
+    },
+    "smart_188_raw": {
+      "min": 0.0,
+      "max": 8933668292646.0
+    },
+    "smart_189_raw": {
+      "min": 0.0,
+      "max": 65535.0
+    },
+    "smart_190_raw": {
+      "min": 11.0,
+      "max": 141.0
+    },
+    "smart_191_raw": {
+      "min": 0.0,
+      "max": 610598.0
+    },
+    "smart_192_raw": {
+      "min": 0.0,
+      "max": 30005.0
+    },
+    "smart_193_raw": {
+      "min": 1.0,
+      "max": 1581801.0
+    },
+    "smart_194_raw": {
+      "min": 11.0,
+      "max": 141.0
+    },
+    "smart_197_raw": {
+      "min": 0.0,
+      "max": 65312.0
+    },
+    "smart_198_raw": {
+      "min": 0.0,
+      "max": 65312.0
+    },
+    "smart_199_raw": {
+      "min": 0.0,
+      "max": 11534.0
+    },
+    "smart_1_raw": {
+      "min": 0.0,
+      "max": 244140624.0
+    },
+    "smart_240_raw": {
+      "min": 0.0,
+      "max": 281470681765970.0
+    },
+    "smart_241_raw": {
+      "min": 0.0,
+      "max": 199023000000.0
+    },
+    "smart_242_raw": {
+      "min": 234.0,
+      "max": 2183475050682.0
+    },
+    "smart_3_raw": {
+      "min": 0.0,
+      "max": 10590.0
+    },
+    "smart_4_raw": {
+      "min": 1.0,
+      "max": 30086.0
+    },
+    "smart_5_raw": {
+      "min": 0.0,
+      "max": 65488.0
+    },
+    "smart_7_raw": {
+      "min": 0.0,
+      "max": 281471681504115.0
+    },
+    "smart_9_raw": {
+      "min": 0.0,
+      "max": 70710.0
+    }
+  }
+}

@@ -4,5 +4,6 @@
 **/data/raw/
 **/data/isolated/
 **/data/clean/
+**/data/preprocessed/
 **/.ipynb_checkpoints/
 .claude/

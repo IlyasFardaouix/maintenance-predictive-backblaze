@@ -9,6 +9,7 @@ données SMART, avec plusieurs modèles, dont un LSTM.
 
 - [`01-gestion-projet/`](01-gestion-projet/) : cahier des charges
 - [`02-donnees/`](02-donnees/) : isolation et nettoyage des données ([détails](02-donnees/README.md))
+- [`03-modelisation/`](03-modelisation/) : modèles de prédiction de la RUL et code commun ([détails](03-modelisation/README.md))
 
 Les autres dossiers (modélisation, évaluation, interprétation métier, livrables)
 seront ajoutés par leurs responsables via leur propre branche, puis fusionnés

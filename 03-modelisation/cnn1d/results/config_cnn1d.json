@@ -1,0 +1,40 @@
+{
+  "version": "v2",
+  "modele": "CNN-1D",
+  "protocole": {
+    "WINDOW": 30,
+    "RUL_CAP": 125,
+    "ALERT_HORIZON": 30,
+    "MAX_GAP_DAYS": 7,
+    "HEALTHY_RATIO": 2,
+    "SEED": 42
+  },
+  "architecture": {
+    "CHANNELS": [
+      64,
+      64,
+      128
+    ],
+    "KERNEL": 3,
+    "DROPOUT": 0.3,
+    "n_parametres_approx": 59000
+  },
+  "entrainement": {
+    "BATCH_SIZE": 1024,
+    "EPOCHS_MAX": 30,
+    "LR": 0.001,
+    "WEIGHT_DECAY": 0.0001,
+    "PATIENCE": 5,
+    "HUBER_DELTA": 0.1,
+    "optimiseur": "AdamW",
+    "scheduler": "ReduceLROnPlateau(factor=0.5, patience=2)"
+  },
+  "resultat_entrainement": {
+    "meilleure_epoch": 2,
+    "epochs_effectues": 7,
+    "meilleur_critere_val_jours": 33.26,
+    "temps_entrainement_min": 0.7,
+    "seuil_alerte_jours": 59.78
+  },
+  "materiel": "Kaggle, GPU Tesla T4, precision mixte"
+}

@@ -7,3 +7,7 @@
 **/data/preprocessed/
 **/.ipynb_checkpoints/
 .claude/
+**/cnn1d_outputs/
+*.pt
+*.parquet
+.env

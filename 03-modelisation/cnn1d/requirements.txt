@@ -1,0 +1,7 @@
+numpy
+polars
+pyarrow
+torch
+scikit-learn
+matplotlib
+huggingface_hub
